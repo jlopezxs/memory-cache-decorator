@@ -1,0 +1,29 @@
+## memory-cache-decorator
+
+> Memory cache decorator
+
+## Requirements and Use
+
+```
+npm install memory-cache-decorator --save
+```
+
+### Use
+```
+import cache from 'memory-cache-decorator';
+
+class Foo {
+  constructor() {}
+
+  @cache({ ttl: 2000 })
+  getRandomNumber() {
+    return Math.random();
+  }
+}
+
+const bar = new Foo();
+bar.getRandomNumber(); //Returns 0.8625773520208384
+bar.getRandomNumber(); //Returns 0.8625773520208384
+
+setTimeout(()=> bar.getRandomNumber(), 2000) //Returns 0.7496571644076617
+```
