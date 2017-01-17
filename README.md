@@ -4,12 +4,12 @@
 
 ## Requirements and Use
 
-```
+```bash
 npm install memory-cache-decorator --save
 ```
 
 ### Use
-```
+```javascript
 import cache from 'memory-cache-decorator';
 
 class Foo {
