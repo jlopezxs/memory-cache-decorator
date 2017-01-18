@@ -1,6 +1,6 @@
 ## memory-cache-decorator
 
-> Memory cache decorator
+> :package: Memory cache decorator
 
 ## Requirements and Use
 
