@@ -1,5 +1,7 @@
 ## memory-cache-decorator
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jlopezxs/memory-cache-decorator.svg)](https://greenkeeper.io/)
+
 > :package: Memory cache decorator
 
 ## Requirements and Use
