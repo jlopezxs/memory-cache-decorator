@@ -3,17 +3,27 @@ import cache from '../src/index';
 describe('cache()', () => {
   it('should it returns the same result', () => {
       class Foo {
-        constructor() {}
+        constructor({ multiplier }) {
+          this._multiplier = multiplier;
+        }
 
         @cache()
         getRandomNumber() {
           return Math.random();
         }
+
+        @cache({ ttl: 2000 })
+        multiplyPerRandomNumber(num) {
+          const multiplier = this._multiplier;
+          return this.getRandomNumber() * multiplier;
+        }
       }
 
-      const bar = new Foo();
-      const expectedResult = bar.getRandomNumber(1);
-      expect(bar.getRandomNumber(1)).toBe(expectedResult);
+      const bar = new Foo({ multiplier: 2 });
+      const expectedResultForGetRandomNumber = bar.getRandomNumber();
+      const expectedResultForGetMultiplyPerRandomNumber = bar.multiplyPerRandomNumber();
+      expect(bar.getRandomNumber()).toBe(expectedResultForGetRandomNumber);
+      expect(bar.multiplyPerRandomNumber()).toBe(expectedResultForGetMultiplyPerRandomNumber);
   });
 
   it('should it returns not the same result with diferent arguments', () => {

@@ -13,11 +13,11 @@ export default function memoryCache({ ttl = DEFAULT_TTL } = {}) {
     const oldFunction = descriptor.value;
 
     return Object.assign(descriptor, {
-      value: (...args) => {
+      value: function value(...args) {
         const cacheKey = `${target.constructor.name}_${name}_${md5(JSON.stringify(args))}`;
         const now = +new Date();
         if (CACHE[cacheKey] === undefined) {
-          const functionResult = oldFunction.apply(target, args);
+          const functionResult = oldFunction.apply(this, args);
 
           CACHE[cacheKey] = {
             created: now,
@@ -26,7 +26,7 @@ export default function memoryCache({ ttl = DEFAULT_TTL } = {}) {
           return functionResult;
         }
         if ((now - CACHE[cacheKey].created) > ttl) delete CACHE[cacheKey];
-        return CACHE[cacheKey] ? CACHE[cacheKey].value : oldFunction.apply(target, args);
+        return CACHE[cacheKey] ? CACHE[cacheKey].value : oldFunction.apply(this, args);
       }
     });
   };
