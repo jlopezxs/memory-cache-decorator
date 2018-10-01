@@ -17,7 +17,7 @@
     "decorator"
   ],
   "scripts": {
-    "lint": "eslint src/**/*.js spec/**/*.spec.js",
+    "lint": "eslint src",
     "test": "jasmine",
     "prebuild": "npm run test",
     "build": "rm -rf lib && babel src -d lib --source-maps",
