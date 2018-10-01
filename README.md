@@ -27,3 +27,7 @@ bar.getRandomNumber(); //Returns 0.8625773520208384
 
 setTimeout(()=> bar.getRandomNumber(), 2000) //Returns 0.7496571644076617
 ```
+
+## Licence
+
+Jordi Lopez and [contributors](https://github.com/blanxii/memory-cache-decorator/graphs/contributors)
